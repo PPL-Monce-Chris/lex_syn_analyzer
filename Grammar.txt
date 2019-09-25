@@ -49,7 +49,7 @@ il -> D
 D -> d
 D -> d D
 bl -> true 
-bl > false
+bl -> false
 be -> bl
 be -> Ae ae
 Ae -> >
