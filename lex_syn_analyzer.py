@@ -1,16 +1,15 @@
-# CS3210 - Principles of Programming Languages - Fall 2019
-# A Lexical Analyzer for an expression
-"""
-Chris Johnson
+'''
 CS3210-001
-9/7/2019
-Homework # 3
-"""
+Program 01
+9/24/19
+Authors:
+Chris Johnson
+Monce Romero
+'''
 
 from enum import Enum
-import sys
+from tree import Tree
 
-# all char classes
 class CharClass(Enum):
     EOF        = 1
     LETTER     = 2
@@ -21,6 +20,84 @@ class CharClass(Enum):
     BLANK      = 7
     PAREN      = 8
     OTHER      = 9
+
+
+# all tokens
+class Token(Enum):
+    EOF = -1
+    ADDITION = 1
+    ASSIGNMENT = 2
+    BEGIN = 3
+    BOOLEAN_TYPE = 4
+    COLON = 5
+    DO = 6
+    ELSE = 7
+    END = 8
+    EQUAL = 9
+    FALSE = 10
+    GREATER = 11
+    GREATER_EQUAL = 12
+    IDENTIFIER = 13
+    IF = 14
+    INTEGER_LITERAL = 15
+    INTEGER_TYPE = 16
+    LESS = 17
+    LESS_EQUAL = 18
+    MULTIPLICATIONS = 19
+    PERIOD = 20
+    PROGRAM = 21
+    READ = 22
+    SEMICOLON = 23
+    SUBTRACTION = 24
+    THEN = 25
+    TRUE = 26
+    VAR = 27
+    WHILE = 28
+    WRITE = 29
+    # 30 = blank?
+
+
+# lexeme to token conversion
+lookup = {
+    "+"      : Token.ADD_OP,
+    "-"      : Token.SUB_OP,
+    "*"      : Token.MUL_OP,
+    "/"      : Token.DIV_OP,
+    "("      : Token.OPEN_PAREN,
+    ")"      : Token.CLOSE_PAREN
+}
+
+def errorMessage(code):
+    msg = "Error " + str(code).zfill(2) + ": "
+    if code == 1:
+        return msg + "source file missing"
+    if code == 2:
+        return msg + "couldn't open source file"
+    if code == 3:
+        return msg + "lexical error"
+    if code == 4:
+        return msg + "couldn't open grammar file"
+    if code == 5:
+        return msg + "couldn't open SLR table file"
+    if code == 6:
+        return msg + "EOF expected"
+    if code == 7:
+        return msg + "identifier expected"
+    if code == 8:
+        return msg + "special word missing"
+    if code == 9:
+        return msg + "symbol missing"
+    if code == 10:
+        return msg + "data type expected"
+    if code == 11:
+        return msg + "identifier or literal value expected"
+
+    # any other errors go between 11 - 99
+
+    if code == 99:
+        return msg + "Syntax error"
+    return msg + "syntax error"
+
 
 # reads the next char from input and returns its class
 def getChar(input):
@@ -33,17 +110,18 @@ def getChar(input):
         return (c, CharClass.DIGIT)
     if c == '"':
         return (c, CharClass.QUOTE)
-    if c in ['+', '-', '*', '/', '>', '=', '<']:
+    if c in ['+', '-', '*', '/']:
         return (c, CharClass.OPERATOR)
-    if c in ['.', ':', ',', ';']:
+    if c in ['.', ';']:
         return (c, CharClass.PUNCTUATOR)
     if c in [' ', '\n', '\t']:
         return (c, CharClass.BLANK)
     if c in ['(', ')']:
-        return (c, CharClass.PAREN)
+        return (c, CharClass.DELIMITER)
     return (c, CharClass.OTHER)
 
-# calls getChar and getChar until it returns a non-blank
+
+# calls getChar and addChar until it returns a non-blank
 def getNonBlank(input):
     ignore = ""
     while True:
@@ -53,6 +131,7 @@ def getNonBlank(input):
         else:
             return input
 
+
 # adds the next char from input to lexeme, advancing the input by one char
 def addChar(input, lexeme):
     if len(input) > 0:
@@ -60,27 +139,6 @@ def addChar(input, lexeme):
         input = input[1:]
     return (input, lexeme)
 
-# all tokens
-class Token(Enum):
-    ADD_OP     = 1
-    SUB_OP     = 2
-    MUL_OP     = 3
-    DIV_OP     = 4
-    IDENTIFIER = 5
-    LITERAL    = 6
-    OPEN_PAREN = 7
-    CLOSE_PAREN = 8
-
-
-# lexeme to token conversion
-lookup = {
-    "+"      : Token.ADD_OP,
-    "-"      : Token.SUB_OP,
-    "*"      : Token.MUL_OP,
-    "/"      : Token.DIV_OP,
-    "("      : Token.OPEN_PAREN,
-    ")"      : Token.CLOSE_PAREN
-}
 
 # returns the next (lexeme, token) pair or None if EOF is reached
 def lex(input):
@@ -128,28 +186,4 @@ def lex(input):
             return(input, lexeme, lookup[lexeme])
 
     # TODO: anything else, raise an exception
-    raise Exception("Lexical Analyzer Error: unrecognized symbol was found!")
-
-# main
-if __name__ == "__main__":
-
-    # checks if source file was passed and if it exists
-    if len(sys.argv) != 2:
-        raise ValueError("Missing source file")
-    source = open(sys.argv[1], "rt")
-    if not source:
-        raise IOError("Couldn't open source file")
-    input = source.read()
-    source.close()
-    output = []
-
-    # main loop
-    while True:
-        input, lexeme, token = lex(input)
-        if lexeme == None:
-            break
-        output.append((lexeme, token))
-
-    # prints the output
-    for (lexeme, token) in output:
-        print(lexeme, token)
+   # raise Exception("Lexical Analyzer Error: unrecognized symbol was found!")
