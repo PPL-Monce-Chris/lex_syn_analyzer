@@ -212,12 +212,12 @@ def parse(input, grammar, actions, gotos):
 # main
 if __name__ == "__main__":
 
-    input = open("grammar.txt", "rt")
+    input = open("grammar_act7.txt", "rt")
     grammar = loadGrammar(input)
     # printGrammar(grammar)
     input.close()
 
-    input = open("slr_table.csv", "rt")
+    input = open("slr_table_act7.csv", "rt")
     actions, gotos = loadTable(input)
     # printActions(actions)
     # printGotos(gotos)
@@ -225,7 +225,9 @@ if __name__ == "__main__":
 
     # in the beginning we will write the input as a sequence of terminal symbols, ending by $
     # later we will integrate this code with the lexical analyzer
-    input = [ 'l', '+', 'i', '/', 'l', '*', 'l', '$' ]
+    input = [ 'l', 'i', '/', 'l', '*', 'l', '$' ]
+    #input = [ 'l', '+', 'i', '/', 'l', '*', 'l', '$' ]
+
 
     # tree building update
     tree = parse(input, grammar, actions, gotos)
