@@ -178,14 +178,12 @@ def parse(input, grammar, actions, gotos):
         print("input: ", end = "")
         print(input, end = " ")
         state = stack[-1]
+
         print("\n  state  ", state, " ################\n")
         token = input[0]
         print("\n  token  ", token, " ################\n")
-
-
         action = actions[(state, token)]
         print("\n  action  ", action, " ################\n")
-
         print("action: ", end = "")
         print(action)
 
@@ -196,7 +194,7 @@ def parse(input, grammar, actions, gotos):
         if action[0] == 's':
             input.pop(0)
             stack.append(token)
-            state = int(action[1])
+            state = int(action[1:])
             print("\n", "state**************** =  ", state, "\n")
             stack.append(state)
 
@@ -207,12 +205,16 @@ def parse(input, grammar, actions, gotos):
 
         # reduce operation
         elif action[0] == 'r':
-            production = grammar[int(action[1])]
+            production = grammar[int(action[1:])]
             lhs = getLHS(production)
+            print("\n ^^^^^^^^^^^^ lhs - ", lhs, "\n")
             rhs = getRHS(production)
             for i in range(len(rhs) * 2):
                 stack.pop()
             state = stack[-1]
+            print("\n &&&&&&&&&& state = ", state, "\n")
+            print("\n &&&&&&&&&& lhs = ", lhs, "\n")
+
             stack.append(lhs)
             stack.append(int(gotos[(state, lhs)]))
 
@@ -229,6 +231,9 @@ def parse(input, grammar, actions, gotos):
 
             # TODOd #6: append the new tree to the list of trees
             trees.append(newTree)
+
+        elif action == 'acc':
+            return True
 
         # not a shift or reduce operation, must be an "accept" operation
         else:
@@ -277,7 +282,7 @@ if __name__ == "__main__":
 
 
     #input = [ 'integer_literal', 'i', '/', 'l', '*', 'l', '$' ]
-    input = ['program', 'i', 'var', 'i', ':',  'types', 'begin', 'read', 'identifier', ';', 'identifier', ':=', 'identifier', '+', 'identifier', ';', 'write', 'identifier', 'end', '.' ]
+    input = ['program', 'i', 'var', 'i', ':',  'types', 'begin', 'read', 'i', ';', 'i', ':=', 'i', '+', 'i', ';', 'write', 'i', 'end', '.' ]
 
 
     # tree building update
