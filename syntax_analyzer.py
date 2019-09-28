@@ -66,7 +66,7 @@ class Tree:
                     print(tab + child)
 
 ########################################################################################
-#   Following methods used to print productions.
+#   Following methods used to print grammar, gotos, actions.
 
 # returns the LHS (left hand side) of a given production
 def getLHS(production):
@@ -178,8 +178,14 @@ def parse(input, grammar, actions, gotos):
         print("input: ", end = "")
         print(input, end = " ")
         state = stack[-1]
+        print("\n  state  ", state, " ################\n")
         token = input[0]
+        print("\n  token  ", token, " ################\n")
+
+
         action = actions[(state, token)]
+        print("\n  action  ", action, " ################\n")
+
         print("action: ", end = "")
         print(action)
 
@@ -191,6 +197,7 @@ def parse(input, grammar, actions, gotos):
             input.pop(0)
             stack.append(token)
             state = int(action[1])
+            print("\n", "state**************** =  ", state, "\n")
             stack.append(state)
 
             # TODOd #2: create a new tree, set data to token, and append it to the list of trees
@@ -243,17 +250,16 @@ if __name__ == "__main__":
 
     input = open("Grammar_new.txt", "rt")
     grammar = loadGrammar(input)
-    #printGrammar(grammar, input)
     input.close()
-
 
     input = open("slr_table_new.csv", "rt")
     actions, gotos = loadTable(input)
     input.close()
 
+
 ##############################################################
     # this is to print out grammar actions and gotos to file
-
+    '''
     file = open("read_grammar.txt", "w")
     printGrammar(grammar, file)
     file.close()
@@ -265,15 +271,17 @@ if __name__ == "__main__":
     file = open("gotos.txt", "w")
     printGotos(gotos, file)
     file.close()
+    '''
+
 ##############################################################
 
 
     #input = [ 'integer_literal', 'i', '/', 'l', '*', 'l', '$' ]
-    input = [ 'program', 'identifier', 'var', 'identifier', ':',  'types', 'begin', 'read', 'identifier', ';', 'identifier', ':=', 'identifier', '+', 'identifier', ';', 'write', 'identifier', 'end', '.' ]
+    input = ['program', 'i', 'var', 'i', ':',  'types', 'begin', 'read', 'identifier', ';', 'identifier', ':=', 'identifier', '+', 'identifier', ';', 'write', 'identifier', 'end', '.' ]
 
 
     # tree building update
-    '''
+
     tree = parse(input, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
@@ -281,4 +289,3 @@ if __name__ == "__main__":
         tree.print()
     else:
         print("Code has syntax errors!")
-        '''
