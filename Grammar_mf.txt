@@ -1,4 +1,11 @@
 pr -> program identifier block .
+identifier -> letter'
+letter' -> letter
+letter' -> letter letter'
+letter' -> letter digit'
+digit' -> digit
+digit' -> digit digit'
+digit' -> digit letter'
 block -> [ var_declaration_section ] compound_statement
 var_declaration_section -> var ; var_declaration’
 var_declaration’ -> var_declaration ;
@@ -36,6 +43,9 @@ factor -> identifier
 factor -> integer_literal
 literal -> integer_literal
 literal -> boolean_literal
+integer_literal -> digit'
+digit' -> digit
+digit' -> digit digit'
 boolean_literal -> true
 boolean_literal -> false
 boolean_expression -> boolean_literal

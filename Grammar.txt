@@ -1,8 +1,4 @@
 pr -> program identifier block .
-identifier -> letter identifier'
-identifier' -> ''
-identifier' -> letter
-identifier' -> digit
 block -> var_declaration_section compound_statement
 block -> compound_statement
 var_declaration_section ->  var var_declaration_section'
@@ -29,7 +25,7 @@ structured_statement -> if_statement
 structured_statement -> while_statement
 structured_statement -> compound_statement
 if_statement -> if boolean_expression then statement
-if_statement -> if boolean_expression then statement else statement
+if_statement -> if boolean_expression else statement
 while_statement -> while boolean_expression do statement
 expression -> arithmetic_expression
 expression -> boolean_expression
@@ -42,11 +38,9 @@ factor -> identifier
 factor -> integer_literal
 literal -> integer_literal
 literal -> boolean_literal
-integer_literal -> integer_literal'
-integer_literal' -> digit
-integer_literal' -> digit integer_literal'
 boolean_literal -> true
 boolean_literal -> false
+boolean_expression -> boolean_literal
 boolean_expression -> boolean_literal
 boolean_expression -> arithmetic_expression > arithmetic_expression
 boolean_expression -> arithmetic_expression >= arithmetic_expression
