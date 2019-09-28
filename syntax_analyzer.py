@@ -65,17 +65,8 @@ class Tree:
                 else:
                     print(tab + child)
 
-
 ########################################################################################
-
-
-
-# reads the given input and returns the grammar as a list of productions
-def loadGrammar(input):
-    grammar = []
-    for line in input:
-        grammar.append(line.strip())
-    return grammar
+#   Following methods used to print productions.
 
 # returns the LHS (left hand side) of a given production
 def getLHS(production):
@@ -86,19 +77,68 @@ def getRHS(production):
     return production.split("->")[1].strip().split(" ")
 
 # prints the productions of a given grammar, one per line
-def printGrammar(grammar):
+def printGrammar(grammar, file):
     i = 0
     for production in grammar:
-        print(str(i) + ". " + getLHS(production), end = " -> ")
-        print(getRHS(production))
+        #file.write(str(i), ". ", getLHS(production), " -> ", str(getRHS(production)))
+
+        file.write(str(i))
+        file.write(". ")
+        file.write(str(getLHS(production)))
+        file.write(" -> ")
+        file.write(str(getRHS(production)))
+        file.write("\n")
+
+
+        #print(str(i) + ". " + getLHS(production), end = " -> ")
+        #print(getRHS(production))
         i += 1
+
+# prints the given actions, one per line
+def printActions(actions, file):
+    for key in actions:
+        file.write(str(key))
+        file.write(" -> ")
+        file.write(str(actions[key]))
+        file.write("\n")
+        #file.write(key, " -> ", actions[key], "\n")
+
+
+        #file.write(actions[key])
+        #print(key, end = " -> ")
+        #print(actions[key])
+
+# prints the given gotos, one per line
+def printGotos(gotos, file):
+    for key in gotos:
+        file.write(str(key))
+        file.write(" -> ")
+        file.write(str(gotos[key]))
+        file.write("\n")
+        #file.write(str(key, end = " -> ", gotos[key] ))
+
+
+        #print(key, end = " -> ")
+        #print(gotos[key])
+
+#################################################################################
+
+# reads the given input and returns the grammar as a list of productions
+def loadGrammar(input):
+    grammar = []
+    for line in input:
+        grammar.append(line.strip())
+        #print('grammar to be loaded after strip= ', grammar, '\n')
+    return grammar
 
 # reads the given input containing an SLR parsing table and returns the "actions" and "gotos" as dictionaries
 def loadTable(input):
     actions = {}
     gotos = {}
     header = input.readline().strip().split(",")
+    #print('header *********** = ', header)
     end = header.index("$")
+    #print('end = ', end)
     tokens = []
     for field in header[1:end + 1]:
         tokens.append(field)
@@ -123,17 +163,6 @@ def loadTable(input):
             gotos[key] = value
     return (actions, gotos)
 
-# prints the given actions, one per line
-def printActions(actions):
-    for key in actions:
-        print(key, end = " -> ")
-        print(actions[key])
-
-# prints the given gotos, one per line
-def printGotos(gotos):
-    for key in gotos:
-        print(key, end = " -> ")
-        print(gotos[key])
 
 # given an input (source program), grammar, actions, and gotos, returns true/false depending whether the input should be accepted or not
 def parse(input, grammar, actions, gotos):
@@ -212,24 +241,39 @@ def parse(input, grammar, actions, gotos):
 # main
 if __name__ == "__main__":
 
-    input = open("grammar.txt", "rt")
+    input = open("Grammar_new.txt", "rt")
     grammar = loadGrammar(input)
-    # printGrammar(grammar)
+    #printGrammar(grammar, input)
     input.close()
 
-    input = open("slr_table_alt.csv", "rt")
+
+    input = open("slr_table_new.csv", "rt")
     actions, gotos = loadTable(input)
-    printActions(actions)
-    printGotos(gotos)
     input.close()
 
-    # in the beginning we will write the input as a sequence of terminal symbols, ending by $
-    # later we will integrate this code with the lexical analyzer
+##############################################################
+    # this is to print out grammar actions and gotos to file
+
+    file = open("read_grammar.txt", "w")
+    printGrammar(grammar, file)
+    file.close()
+    
+    file = open("actions.txt", "w")
+    printActions(actions, file)
+    file.close()
+
+    file = open("gotos.txt", "w")
+    printGotos(gotos, file)
+    file.close()
+##############################################################
+
+
     #input = [ 'integer_literal', 'i', '/', 'l', '*', 'l', '$' ]
     input = [ 'program', 'identifier', 'var', 'identifier', ':',  'types', 'begin', 'read', 'identifier', ';', 'identifier', ':=', 'identifier', '+', 'identifier', ';', 'write', 'identifier', 'end', '.' ]
 
 
     # tree building update
+    '''
     tree = parse(input, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
@@ -237,3 +281,4 @@ if __name__ == "__main__":
         tree.print()
     else:
         print("Code has syntax errors!")
+        '''
