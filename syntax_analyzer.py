@@ -93,7 +93,6 @@ class Token(Enum):
     WHILE = 28
     WRITE = 29
 
-
 # lexeme to token conversion
 
 # Special Words
@@ -143,7 +142,6 @@ equal = {
     "<": Token.LESS,
     "<=": Token.LESS_EQUAL
 }
-
 
 # returns the next (lexeme, token) pair or None if EOF is reached
 def lex(input):
@@ -209,7 +207,6 @@ def lex(input):
     raise Exception("Lexical Analyzer Error: unrecognized operator found")
 
 ############@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@########################################
-
 
 # error messages to be used
 def errorMessage(code):
@@ -313,18 +310,12 @@ def getRHS(production):
 def printGrammar(grammar, file):
     i = 0
     for production in grammar:
-        #file.write(str(i), ". ", getLHS(production), " -> ", str(getRHS(production)))
-
         file.write(str(i))
         file.write(". ")
         file.write(str(getLHS(production)))
         file.write(" -> ")
         file.write(str(getRHS(production)))
         file.write("\n")
-
-
-        #print(str(i) + ". " + getLHS(production), end = " -> ")
-        #print(getRHS(production))
         i += 1
 
 # prints the given actions, one per line
@@ -334,12 +325,6 @@ def printActions(actions, file):
         file.write(" -> ")
         file.write(str(actions[key]))
         file.write("\n")
-        #file.write(key, " -> ", actions[key], "\n")
-
-
-        #file.write(actions[key])
-        #print(key, end = " -> ")
-        #print(actions[key])
 
 # prints the given gotos, one per line
 def printGotos(gotos, file):
@@ -361,7 +346,6 @@ def loadGrammar(input):
     grammar = []
     for line in input:
         grammar.append(line.strip())
-        #print('grammar to be loaded after strip= ', grammar, '\n')
     return grammar
 
 # reads the given input containing an SLR parsing table and returns the "actions" and "gotos" as dictionaries
@@ -369,9 +353,7 @@ def loadTable(input):
     actions = {}
     gotos = {}
     header = input.readline().strip().split(",")
-    #print('header *********** = ', header)
     end = header.index("$")
-    #print('end = ', end)
     tokens = []
     for field in header[1:end + 1]:
         tokens.append(field)
@@ -411,12 +393,8 @@ def parse(input, grammar, actions, gotos):
         print("input: ", end = "")
         print(input, end = " ")
         state = stack[-1]
-
-        print("\n  state  ", state, " ################\n")
         token = input[0]
-        print("\n  token  ", token, " ################\n")
         action = actions[(state, token)]
-        print("\n  action  ", action, " ################\n")
         print("action: ", end = "")
         print(action)
 
@@ -428,10 +406,8 @@ def parse(input, grammar, actions, gotos):
             input.pop(0)
             stack.append(token)
             state = int(action[1:])
-            print("\n", "state**************** =  ", state, "\n")
             stack.append(state)
 
-            # TODOd #2: create a new tree, set data to token, and append it to the list of trees
             tree = Tree()
             tree.data = token
             trees.append(tree)
@@ -440,29 +416,20 @@ def parse(input, grammar, actions, gotos):
         elif action[0] == 'r':
             production = grammar[int(action[1:])]
             lhs = getLHS(production)
-            print("\n ^^^^^^^^^^^^ lhs - ", lhs, "\n")
             rhs = getRHS(production)
             for i in range(len(rhs) * 2):
                 stack.pop()
             state = stack[-1]
-            print("\n &&&&&&&&&& state = ", state, "\n")
-            print("\n &&&&&&&&&& lhs = ", lhs, "\n")
-
             stack.append(lhs)
             stack.append(int(gotos[(state, lhs)]))
 
-            # TODOd #3: create a new tree and set data to lhs
             newTree = Tree()
             newTree.data = lhs
 
-            # TODOd #4: get "len(rhs)" trees from the right of the list of trees and add each of them as child of the new tree you created, preserving the left-right order
             for tree in trees[-len(rhs):]:
                 newTree.add(tree)
 
-            # TODOd #5: remove "len(rhs)" trees from the right of the list of trees
             trees = trees[:-len(rhs)]
-
-            # TODOd #6: append the new tree to the list of trees
             trees.append(newTree)
 
         elif action == 'acc':
@@ -474,13 +441,11 @@ def parse(input, grammar, actions, gotos):
             lhs = getLHS(production)
             rhs = getRHS(production)
 
-            # TODOd #7: same as reduce but using the 1st rule of the grammar
             root = Tree()
             root.data = lhs
             for tree in trees:
                 root.add(tree)
 
-            # TODOd #8: return the new tree
             return root
 
 # main
@@ -503,23 +468,16 @@ if __name__ == "__main__":
             break
         output.append((lexeme, token))
     tokens = []
-    # prints the output
+    # getting the keys to strip
     for (lexeme, token) in output:
         tokens.append(str(token))
 
-
     str_token = []
-
     for (x) in range(len(tokens)):
-        #print(tokens[x][6:])
         n = convert[tokens[x][6:]]
         str_token.append(n)
-
+    # adding end symbol
     str_token.append("$")
-
-
-    #    print("converted token from file = ", str_token[x])
-
 
     input = open("grammar/grammar.txt", "rt")
     grammar = loadGrammar(input)
@@ -545,20 +503,10 @@ if __name__ == "__main__":
     printGotos(gotos, file)
     file.close()
     '''
-
 ##############################################################
-
-
-    #input = [ 'integer_literal', 'i', '/', 'l', '*', 'l', '$' ]
-    #input = ['program', 'i', 'var', 'i', ':',  'Integer', 'begin', 'read', 'i', ';', 'i', ':=', 'i', '+', 'i', ';', 'write', 'i', 'end', '.' ]
-
-
-    # tree building update
 
     tree = parse(str_token, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
-        #print("Parse Tree:")
-        #tree.print()
     else:
-        print("Code has syntax errors!")
+        raise Exception(errorMessage(99))
