@@ -241,7 +241,52 @@ def errorMessage(code):
         return msg + "Syntax error"
     return msg + "syntax error"
 
-#def parse_error () :
+def parse_error (input, stack, passed_var, passed_begin):
+    print("inpuuuttt", input)
+    print("staackkk", stack)
+    print("passed_var", passed_var)
+    print("passed_begin", passed_begin)
+
+
+    if stack == "program" and input != "i":
+        raise Exception(errorMessage(7))
+    if stack == "i" and input != ":":
+        print("missing : ")
+        raise Exception(errorMessage(99))
+
+def parse_error (input, stack, stack_prev, passed_var, passed_begin):
+    print("inpuuuttt", input)
+    print("staackkk", stack)
+    print("stack previous", stack_prev)
+    print("passed_var", passed_var)
+    print("passed_begin", passed_begin)
+
+    if stack_prev == "program" and stack == "i" and input != "var":
+        raise Exception(errorMessage(8))
+
+    if stack == "program" and input != "i":
+        raise Exception(errorMessage(7))
+
+    if stack == "i" and input != ":" and passed_begin == False:
+        print("missing : ")
+        raise Exception(errorMessage(99))
+
+    if passed_begin == True and passed_var == True and stack_prev == "begin" and input == ";":
+        raise Exception(errorMessage(9))
+    if passed_begin == False and passed_var == True and stack == ":" and input != "type":
+        raise Exception(errorMessage(10))
+
+
+
+
+
+
+
+
+    #print("inpuuuttt", input)
+    #print("staackkk", stack)
+    #print("staackkk", stack_prev)
+
 
 ###########################################################################################
 
@@ -358,26 +403,53 @@ def loadTable(input):
 
 # given an input (source program), grammar, actions, and gotos, returns true/false depending whether the input should be accepted or not
 def parse(input, grammar, actions, gotos):
+    passed_var = False
+    passed_begin = False
 
-    # TODOd #1: create a list of trees
     trees = []
     tree_bool = None
 
     stack = []
     stack.append(0)
     while True:
+
         print("stack: ", end = "")
         print(stack, end = " ")
         print("input: ", end = "")
         print(input, end = " ")
+
         state = stack[-1]
+        print("*********STATE****** = ", state)
         token = input[0]
+        print("*********Token = ", token)
+
         action = actions[(state, token)]
+        print("*********action&&&&& = ", action)
+
         print("action: ", end = "")
-        print(action)
+        print(stack[len(stack) -2], " 5555555555")
+        if stack[len(stack) -2] == "var":
+            passed_var = True
+
+        if stack[len(stack) -2] == "begin":
+            passed_begin = True
 
         if action is None:
+            '''
+            print(stack[-2], "stack prev 2")
+            print(stack[-4], "stack prev 4")
+            print(input[0], "input 0")
+            print("$$$$$$$$$$$$ -- ACTION NONE -- $$$$$$$$$$$$$$")
+            '''
+
+
             # TODO handle different errors for wrong actions
+            #print("^^^^^^^^^^^^stack size", len(stack))
+            if len(stack) > 4:
+                parse_error(input[0], stack[-2], stack[-4], passed_var, passed_begin)
+            else:
+                parse_error(input[0], stack[-2], passed_var, passed_begin)
+
             tree_bool = False
             return tree, False  # tree building update
 
@@ -483,10 +555,11 @@ if __name__ == "__main__":
 ##############################################################
 
     new_tree , tree_bool= parse(str_token, grammar, actions, gotos)
-    print(type(new_tree))
+    #print(type(new_tree))
     if tree_bool:
         print("Input is syntactically correct!")
         print("Parse Tree:")
         new_tree.print()
     else:
-        raise Exception(errorMessage(99))
+        print("syntax incorrect")
+        #raise Exception(errorMessage(99))
