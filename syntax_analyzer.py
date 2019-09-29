@@ -23,7 +23,6 @@ class CharClass(Enum):
     BLANK = 8
     OTHER = 9
 
-
 # reads the next char from input and returns its class
 def getChar(input):
     if len(input) == 0:
@@ -45,7 +44,6 @@ def getChar(input):
         return (c, CharClass.BLANK)
     return (c, CharClass.OTHER)
 
-
 # calls getChar and getChar until it returns a non-blank
 def getNonBlank(input):
     ignore = ""
@@ -56,14 +54,12 @@ def getNonBlank(input):
         else:
             return input
 
-
 # adds the next char from input to lexeme, advancing the input by one char
 def addChar(input, lexeme):
     if len(input) > 0:
         lexeme += input[0]
         input = input[1:]
     return (input, lexeme)
-
 
 # all tokens
 class Token(Enum):
@@ -212,32 +208,7 @@ def lex(input):
     # TODO: anything else, raise an exception
     raise Exception("Lexical Analyzer Error: unrecognized operator found")
 
-
-
-
-
-
-
-
-
-
-
 ############@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@########################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # error messages to be used
@@ -273,6 +244,38 @@ def errorMessage(code):
     return msg + "syntax error"
 
 ###########################################################################################
+
+convert = {
+    "ASSIGNMENT" : ":=",
+    "COLON" : ":",
+    "SEMICOLON" : ";",
+    "PERIOD" : ".",
+    "ADDITION" : "+",
+    "SUBTRACTION" : "-",
+    "MULTIPLICATION" : "*",
+    "EQUAL" : "=",
+    "GREATER" : ">",
+    "GREATER_EQUAL" : ">=",
+    "LESS" : "<",
+    "LESS_EQUAL" : "<=",
+    "INTEGER_TYPE" : "Integer",
+    "BOOLEAN_TYPE" : "Boolean",
+    "PROGRAM" : "program",
+    "VAR" : "var",
+    "BEGIN" : "begin",
+    "WHILE" : "while",
+    "DO" : "do",
+    "IF" : "if",
+    "ELSE" : "else",
+    "END" : "end",
+    "FALSE" : "false",
+    "TRUE" : "true",
+    "READ" : "read",
+    "WRITE" : "write",
+    "THEN" : "then",
+    "IDENTIFIER" : "i",
+    "INTEGER_LITERAL": "integer_literal",
+    }
 
 # Tree class
 class Tree:
@@ -499,24 +502,23 @@ if __name__ == "__main__":
         if lexeme == None:
             break
         output.append((lexeme, token))
-
+    tokens = []
     # prints the output
     for (lexeme, token) in output:
-        print(lexeme, token)
+        tokens.append(str(token))
 
 
+    str_token = []
+
+    for (x) in range(len(tokens)):
+        n = convert[tokens[x][6:]]
+        str_token.append(n)
 
 
+    #for (x) in range(len(str_token)):
+    #    print("converted token from file = ", str_token[x])
 
 
-
-
-
-
-
-
-
-    '''
     input = open("Grammar_new.txt", "rt")
     grammar = loadGrammar(input)
     input.close()
@@ -524,7 +526,7 @@ if __name__ == "__main__":
     input = open("slr_table_new.csv", "rt")
     actions, gotos = loadTable(input)
     input.close()
-    '''
+
 
 ##############################################################
     # this is to print out grammar actions and gotos to file
@@ -550,12 +552,11 @@ if __name__ == "__main__":
 
 
     # tree building update
-    '''
-    tree = parse(input, grammar, actions, gotos)
+
+    tree = parse(str_token, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
         print("Parse Tree:")
         tree.print()
     else:
         print("Code has syntax errors!")
-    '''
