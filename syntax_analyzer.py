@@ -207,7 +207,6 @@ def lex(input):
     # TODO: anything else, raise an exception
     raise Exception("Lexical Analyzer Error: unrecognized operator found")
 
-############@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@########################################
 
 # error messages to be used
 def errorMessage(code):
