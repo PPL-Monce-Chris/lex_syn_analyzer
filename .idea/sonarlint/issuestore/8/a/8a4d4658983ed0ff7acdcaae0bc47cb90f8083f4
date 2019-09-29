@@ -1,0 +1,15 @@
+
+qpython:S1542ï"RRename function "loadTable" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(˜Á°K8µ‰ÁİÖ-
+|python:S117Æ"XRename this local variable "newTree" to match the regular expression ^[_a-z][a-z0-9_]*$.(ï­¬¬ıÿÿÿÿ8—ıÆİÖ-
+tpython:S3776™"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(ë¯Äº8—ıÆİÖ-
+wpython:S117¶"ZRename this local variable "charClass" to match the regular expression ^[_a-z][a-z0-9_]*$.(Â™ôûÿÿÿÿ
+opython:S1542â"ORename function "getLHS" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Œƒâ©8˜®·İÖ-
+mpython:S1542³"TRename function "getNonBlank" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(áà×ÿ
+mpython:S3776å"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ñ¥È¹
+wpython:S117è"ZRename this local variable "charClass" to match the regular expression ^[_a-z][a-z0-9_]*$.(Â™ôûÿÿÿÿ
+npython:S1542¾"PRename function "addChar" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(£¼²ÿÿÿÿÿ
+ypython:S1542"TRename function "loadGrammar" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ÎÄìÔÿÿÿÿÿ8ÚİÒİÖ-
+rpython:S1542W"URename function "errorMessage" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(í­É»şÿÿÿÿ
+>python:S125Í"Remove this commented out code.(ü½§á8‡ïêàÖ-
+ipython:S1542"PRename function "getChar" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(¾ığ£
+tpython:S1542ç"ORename function "getRHS" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(‚·¾Ìùÿÿÿÿ8˜®·İÖ-

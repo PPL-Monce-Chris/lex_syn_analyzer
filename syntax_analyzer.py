@@ -489,7 +489,7 @@ if __name__ == "__main__":
     # checks if source file was passed and if it exists
     if len(sys.argv) != 2:
         raise ValueError("Missing source file")
-    source = open(sys.argv[1], "rt")
+    source = open('sources/' + sys.argv[1], "rt")
     if not source:
         raise IOError("Couldn't open source file")
     input = source.read()
@@ -519,11 +519,11 @@ if __name__ == "__main__":
     #    print("converted token from file = ", str_token[x])
 
 
-    input = open("Grammar_new.txt", "rt")
+    input = open("grammar/Grammar_new.txt", "rt")
     grammar = loadGrammar(input)
     input.close()
 
-    input = open("slr_table_new.csv", "rt")
+    input = open("slr/slr_table_new.csv", "rt")
     actions, gotos = loadTable(input)
     input.close()
 
