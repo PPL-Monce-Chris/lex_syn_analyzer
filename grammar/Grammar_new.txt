@@ -4,7 +4,7 @@ block -> compound_statement
 var_declaration_section ->  var var_declaration_section*
 var_declaration_section* -> var_declaration
 var_declaration_section* -> var_declaration ; variable_declaration_section*
-var_declaration -> var_declaration* : types
+var_declaration -> var_declaration* : type
 var_declaration* -> i
 var_declaration* -> i var_declaration*
 type -> Integer
@@ -29,7 +29,7 @@ if_statement -> if boolean_expression else statement
 while_statement -> while boolean_expression do statement
 expression -> arithmetic_expression
 expression -> boolean_expression
-arithmetic_expression -> arithmetic_expression term
+arithmetic_expression -> term
 arithmetic_expression -> arithmetic_expression + term
 arithmetic_expression -> arithmetic_expression - term
 term -> factor
@@ -38,9 +38,8 @@ factor -> i
 factor -> integer_literal
 literal -> integer_literal
 literal -> boolean_literal
-integer_literal -> integer_literal*
-integer_literal* -> digit
-integer_literal* -> digit integer_literal*
+digit* -> digit
+digit* -> digit digit*
 boolean_literal -> true
 boolean_literal -> false
 boolean_expression -> boolean_literal

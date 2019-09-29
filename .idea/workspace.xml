@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75853dc0-813d-4d13-808a-32aa12796591" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Grammar.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrammarMonce.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grammar_new.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grammar_act7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slr_table.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slr_table_act7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slr_table_new.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source1.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source10.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source11.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source12.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source13.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source14.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source15.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source2.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source3.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source4.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source5.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source6.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source7.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source8.pas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source9.pas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/Grammar_new.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/Grammar_new.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slr/slr_table_new.csv" beforeDir="false" afterPath="$PROJECT_DIR$/slr/slr_table_new.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/syntax_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,13 +17,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/syntax_analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-430">
-              <caret line="495" column="18" lean-forward="true" selection-start-line="495" selection-start-column="18" selection-end-line="495" selection-end-column="18" />
+            <state relative-caret-position="219">
+              <caret line="526" column="37" lean-forward="true" selection-start-line="526" selection-start-column="37" selection-end-line="526" selection-end-column="37" />
               <folding>
                 <element signature="e#75#96#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grammar/Grammar_new.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="33" column="53" lean-forward="true" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sources/source1.pas">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sources/source2.pas">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grammar/Grammar_G.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -58,6 +66,13 @@
       <find>read</find>
       <find>type</find>
       <find>i</find>
+      <find>var_declaration</find>
+      <find>:=</find>
+      <find>statement</find>
+      <find>integer_ty</find>
+      <find>compound_statement</find>
+      <find>literal</find>
+      <find>expression</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -76,6 +91,7 @@
         <option value="$PROJECT_DIR$/Grammar_alt.txt" />
         <option value="$PROJECT_DIR$/Grammar_new.txt" />
         <option value="$PROJECT_DIR$/syntax_analyzer.py" />
+        <option value="$PROJECT_DIR$/grammar/Grammar_new.txt" />
       </list>
     </option>
   </component>
@@ -138,17 +154,17 @@
       <updated>1569464759444</updated>
       <workItem from="1569464761371" duration="176000" />
       <workItem from="1569464964480" duration="12896000" />
-      <workItem from="1569696733232" duration="26436000" />
+      <workItem from="1569696733232" duration="30592000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39508000" />
+    <option name="totallyTimeSpent" value="43664000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10565635" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.10565635" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -164,7 +180,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.3626493" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32936078" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -172,7 +188,7 @@
       <window_info anchor="right" id="SciView" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12753469" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.10565635" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -187,8 +203,8 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.247557" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.3626493" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -343,10 +359,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grammar/Grammar_G.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sources/source2.pas">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sources/source1.pas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grammar/Grammar_new.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="33" column="53" lean-forward="true" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/syntax_analyzer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-430">
-          <caret line="495" column="18" lean-forward="true" selection-start-line="495" selection-start-column="18" selection-end-line="495" selection-end-column="18" />
+        <state relative-caret-position="219">
+          <caret line="526" column="37" lean-forward="true" selection-start-line="526" selection-start-column="37" selection-end-line="526" selection-end-column="37" />
           <folding>
             <element signature="e#75#96#0" expanded="true" />
           </folding>
