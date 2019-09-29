@@ -8,6 +8,7 @@ Monce Romero
 '''
 
 from enum import Enum
+from tree import Tree
 import sys
 
 
@@ -240,6 +241,8 @@ def errorMessage(code):
         return msg + "Syntax error"
     return msg + "syntax error"
 
+#def parse_error () :
+
 ###########################################################################################
 
 convert = {
@@ -273,27 +276,6 @@ convert = {
     "IDENTIFIER" : "i",
     "INTEGER_LITERAL": "integer_literal",
     }
-
-# Tree class
-class Tree:
-    TAB = "   "
-
-    def __init__(self):
-        self.data = None
-        self.children = []
-
-    def add(self, child):
-        self.children.append(child)
-
-    def print(self, tab=""):
-        if self.data != None:
-            print(tab + self.data)
-            tab += self.TAB
-            for child in self.children:
-                if isinstance(child, Tree):
-                    child.print(tab)
-                else:
-                    print(tab + child)
 
 ########################################################################################
 #   Following methods used to print grammar, gotos, actions.
@@ -333,11 +315,6 @@ def printGotos(gotos, file):
         file.write(" -> ")
         file.write(str(gotos[key]))
         file.write("\n")
-        #file.write(str(key, end = " -> ", gotos[key] ))
-
-
-        #print(key, end = " -> ")
-        #print(gotos[key])
 
 #################################################################################
 
@@ -384,6 +361,7 @@ def parse(input, grammar, actions, gotos):
 
     # TODOd #1: create a list of trees
     trees = []
+    tree_bool = None
 
     stack = []
     stack.append(0)
@@ -399,7 +377,9 @@ def parse(input, grammar, actions, gotos):
         print(action)
 
         if action is None:
-            return None  # tree building update
+            # TODO handle different errors for wrong actions
+            tree_bool = False
+            return tree, False  # tree building update
 
         # shift operation
         if action[0] == 's':
@@ -432,9 +412,6 @@ def parse(input, grammar, actions, gotos):
             trees = trees[:-len(rhs)]
             trees.append(newTree)
 
-        elif action == 'acc':
-            return True
-
         # not a shift or reduce operation, must be an "accept" operation
         else:
             production = grammar[0]
@@ -446,7 +423,7 @@ def parse(input, grammar, actions, gotos):
             for tree in trees:
                 root.add(tree)
 
-            return root
+            return root, True
 
 # main
 if __name__ == "__main__":
@@ -505,8 +482,11 @@ if __name__ == "__main__":
     '''
 ##############################################################
 
-    tree = parse(str_token, grammar, actions, gotos)
-    if tree:
+    new_tree , tree_bool= parse(str_token, grammar, actions, gotos)
+    print(type(new_tree))
+    if tree_bool:
         print("Input is syntactically correct!")
+        print("Parse Tree:")
+        new_tree.print()
     else:
         raise Exception(errorMessage(99))
