@@ -515,6 +515,8 @@ if __name__ == "__main__":
         n = convert[tokens[x][6:]]
         str_token.append(n)
 
+    str_token.append("$")
+
 
     #    print("converted token from file = ", str_token[x])
 
@@ -548,7 +550,7 @@ if __name__ == "__main__":
 
 
     #input = [ 'integer_literal', 'i', '/', 'l', '*', 'l', '$' ]
-    input = ['program', 'i', 'var', 'i', ':',  'Integer', 'begin', 'read', 'i', ';', 'i', ':=', 'i', '+', 'i', ';', 'write', 'i', 'end', '.' ]
+    #input = ['program', 'i', 'var', 'i', ':',  'Integer', 'begin', 'read', 'i', ';', 'i', ':=', 'i', '+', 'i', ';', 'write', 'i', 'end', '.' ]
 
 
     # tree building update
