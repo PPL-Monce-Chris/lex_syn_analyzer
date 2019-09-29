@@ -242,24 +242,12 @@ def errorMessage(code):
     return msg + "syntax error"
 
 def parse_error1 (input, stack, passed_var, passed_begin, passed_if, passed_else, passed_then, passed_while):
-    print("inpuuuttt", input)
-    print("staackkk", stack)
-    print("passed_var", passed_var)
-    print("passed_begin", passed_begin)
-
-
     if stack == "program" and input != "i":
         raise Exception(errorMessage(7))
     if stack == "i" and input != ":":
-        print("missing : ")
         raise Exception(errorMessage(99))
 
 def parse_error (input, stack, stack_prev, passed_var, passed_begin, passed_if, passed_else, passed_then, passed_while):
-    print("inpuuuttt", input)
-    print("staackkk", stack)
-    print("stack previous", stack_prev)
-    print("passed_var", passed_var)
-    print("passed_begin", passed_begin)
 
     if stack_prev == "program" and stack == "i" and input != "var":
         raise Exception(errorMessage(8))
@@ -268,7 +256,6 @@ def parse_error (input, stack, stack_prev, passed_var, passed_begin, passed_if, 
         raise Exception(errorMessage(7))
 
     if stack == "i" and input != ":" and passed_begin == False:
-        print("missing : ")
         raise Exception(errorMessage(99))
 
     if passed_begin == True and passed_var == True and stack_prev == "begin" and input == ";":
@@ -291,11 +278,10 @@ def parse_error (input, stack, stack_prev, passed_var, passed_begin, passed_if, 
     if passed_then == True and stack_prev == ":=" and stack == "true" and input != ";":
         raise Exception(errorMessage(99))
 
-    if stack == "." and input != None:
+    if stack == "." and input != "$":
         raise Exception(errorMessage(6))
 
     if stack_prev == "while" and stack == "arithmetic_expression" and input == "do":
-        print("source10")
         raise Exception(errorMessage(9))
 
 
@@ -431,18 +417,12 @@ def parse(input, grammar, actions, gotos):
         print(stack, end = " \n")
         print("input: ", end = "")
         print(input, end = " \n")
-
         state = stack[-1]
-        #print("*********STATE****** = ", state)
         token = input[0]
-        #print("*********Token = ", token)
-
         action = actions[(state, token)]
-        #print("*********action&&&&& = ", action)
-
         print("action: ", end = "")
         print(action)
-        #print(stack[len(stack) -2], " 5555555555")
+
         if stack[len(stack) -2] == "var":
             passed_var = True
 
@@ -462,17 +442,7 @@ def parse(input, grammar, actions, gotos):
             passed_if = True
 
         if action is None:
-            print("\n")
 
-            #print(stack[-2], "stack")
-            #print(stack[-4], "stack prev")
-            #print(input[0], "input")
-            print("$$$$$$$$$$$$ -- ACTION NONE -- $$$$$$$$$$$$$$")
-
-
-
-            # TODO handle different errors for wrong actions
-            #print("^^^^^^^^^^^^stack size", len(stack))
             if len(stack) > 4:
                 parse_error(input[0], stack[-2], stack[-4], passed_var, passed_begin, passed_if, passed_else, passed_then, passed_while)
             else:
@@ -582,11 +552,9 @@ if __name__ == "__main__":
 ##############################################################
 
     new_tree , tree_bool= parse(str_token, grammar, actions, gotos)
-    #print(type(new_tree))
     if tree_bool:
         print("Input is syntactically correct!")
         print("Parse Tree:")
         new_tree.print()
     else:
         print("syntax incorrect")
-        #raise Exception(errorMessage(99))
