@@ -489,7 +489,7 @@ if __name__ == "__main__":
     # checks if source file was passed and if it exists
     if len(sys.argv) != 2:
         raise ValueError("Missing source file")
-    source = open(sys.argv[1], "rt")
+    source = open('sources/' + sys.argv[1], "rt")
     if not source:
         raise IOError("Couldn't open source file")
     input = source.read()
@@ -511,19 +511,21 @@ if __name__ == "__main__":
     str_token = []
 
     for (x) in range(len(tokens)):
+        #print(tokens[x][6:])
         n = convert[tokens[x][6:]]
         str_token.append(n)
 
+    str_token.append("$")
 
-    #for (x) in range(len(str_token)):
+
     #    print("converted token from file = ", str_token[x])
 
 
-    input = open("Grammar_new.txt", "rt")
+    input = open("grammar/Grammar_new.txt", "rt")
     grammar = loadGrammar(input)
     input.close()
 
-    input = open("slr_table_new.csv", "rt")
+    input = open("slr/slr_table_new.csv", "rt")
     actions, gotos = loadTable(input)
     input.close()
 
@@ -548,7 +550,7 @@ if __name__ == "__main__":
 
 
     #input = [ 'integer_literal', 'i', '/', 'l', '*', 'l', '$' ]
-    input = ['program', 'i', 'var', 'i', ':',  'types', 'begin', 'read', 'i', ';', 'i', ':=', 'i', '+', 'i', ';', 'write', 'i', 'end', '.' ]
+    #input = ['program', 'i', 'var', 'i', ':',  'Integer', 'begin', 'read', 'i', ';', 'i', ':=', 'i', '+', 'i', ';', 'write', 'i', 'end', '.' ]
 
 
     # tree building update
@@ -556,7 +558,7 @@ if __name__ == "__main__":
     tree = parse(str_token, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
-        print("Parse Tree:")
-        tree.print()
+        #print("Parse Tree:")
+        #tree.print()
     else:
         print("Code has syntax errors!")

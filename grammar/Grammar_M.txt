@@ -1,0 +1,60 @@
+p -> program i b .
+i -> L
+L -> l 
+L -> l L
+L -> l D
+D -> d 
+D -> d D
+b -> cs
+b -> vds cs
+vds -> var VD
+VD -> vd
+VD -> vd ; VD
+vd -> I : type
+I -> i
+I -> i I
+t -> Integer
+t -> Boolean
+cs -> begin S end
+S -> s
+S -> s ; S
+s -> ss
+s -> sus
+ss -> as
+ss -> rs
+ss -> ws
+as -> i := e
+rs -> read i
+ws -> write i
+ws -> write l
+sus -> is
+sus -> ws
+sus -> cs
+is -> if be then s
+is -> if be then s else s 
+ws -> while be do s
+e -> ae
+e -> be
+ae -> ae O te
+O -> +
+O -> -
+ae -> te
+te -> te * f
+te -> f
+f -> i
+f -> il
+li -> il
+li -> bl
+il -> D 
+D -> d
+D -> d D
+bl -> true 
+bl -> false
+be -> bl
+be -> Ae ae
+Ae -> >
+Ae -> >=
+Ae -> =
+Ae -> <=
+Ae -> <
+
