@@ -558,7 +558,7 @@ if __name__ == "__main__":
     tree = parse(str_token, grammar, actions, gotos)
     if tree:
         print("Input is syntactically correct!")
-        print("Parse Tree:")
-        tree.print()
+        #print("Parse Tree:")
+        #tree.print()
     else:
         print("Code has syntax errors!")

@@ -4,6 +4,8 @@
     <list default="true" id="75853dc0-813d-4d13-808a-32aa12796591" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grammar/Grammar_new.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/Grammar_new.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slr/slr_table_new.csv" beforeDir="false" afterPath="$PROJECT_DIR$/slr/slr_table_new.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntax_analyzer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/syntax_analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="558" column="12" lean-forward="true" selection-start-line="558" selection-start-column="12" selection-end-line="558" selection-end-column="12" />
+            <state relative-caret-position="43">
+              <caret line="540" column="31" lean-forward="true" selection-start-line="540" selection-start-column="31" selection-end-line="540" selection-end-column="31" />
               <folding>
                 <element signature="e#75#96#0" expanded="true" />
               </folding>
@@ -25,11 +27,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammar/Grammar_new.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+            <state relative-caret-position="182">
+              <caret line="36" column="11" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/slr/slr_table_new.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="64" lean-forward="true" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sources/source3.pas">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -72,6 +92,7 @@
       <find>compound_statement</find>
       <find>literal</find>
       <find>expression</find>
+      <find>TRUE</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,6 +112,7 @@
         <option value="$PROJECT_DIR$/Grammar_new.txt" />
         <option value="$PROJECT_DIR$/syntax_analyzer.py" />
         <option value="$PROJECT_DIR$/grammar/Grammar_new.txt" />
+        <option value="$PROJECT_DIR$/slr/slr_table_new.csv" />
       </list>
     </option>
   </component>
@@ -115,12 +137,7 @@
             <path>
               <item name="lex_syn_analyzer" type="b2602c69:ProjectViewProjectNode" />
               <item name="lex_syn_analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="grammar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lex_syn_analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lex_syn_analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="sources" type="462c0819:PsiDirectoryNode" />
+              <item name="slr" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -158,12 +175,12 @@
       <updated>1569464759444</updated>
       <workItem from="1569464761371" duration="176000" />
       <workItem from="1569464964480" duration="12896000" />
-      <workItem from="1569696733232" duration="34854000" />
+      <workItem from="1569696733232" duration="36250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47926000" />
+    <option name="totallyTimeSpent" value="49322000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -367,9 +384,6 @@
     <entry file="file://$PROJECT_DIR$/grammar/Grammar_G.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sources/source3.pas">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/sources/source2.pas">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -382,18 +396,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/syntax_analyzer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="558" column="12" lean-forward="true" selection-start-line="558" selection-start-column="12" selection-end-line="558" selection-end-column="12" />
+        <state relative-caret-position="43">
+          <caret line="540" column="31" lean-forward="true" selection-start-line="540" selection-start-column="31" selection-end-line="540" selection-end-column="31" />
           <folding>
             <element signature="e#75#96#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sources/source3.pas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grammar/Grammar_new.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+        <state relative-caret-position="182">
+          <caret line="36" column="11" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slr/slr_table_new.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="64" lean-forward="true" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
         </state>
       </provider>
     </entry>
