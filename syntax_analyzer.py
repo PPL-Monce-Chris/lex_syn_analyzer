@@ -521,11 +521,11 @@ if __name__ == "__main__":
     #    print("converted token from file = ", str_token[x])
 
 
-    input = open("grammar/Grammar_new.txt", "rt")
+    input = open("grammar/grammar.txt", "rt")
     grammar = loadGrammar(input)
     input.close()
 
-    input = open("slr/slr_table_new.csv", "rt")
+    input = open("slr/slr_table.csv", "rt")
     actions, gotos = loadTable(input)
     input.close()
 
